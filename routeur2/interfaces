@@ -1,0 +1,97 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+	address 192.168.10.2
+	netmask 255.255.255.0
+	network 192.168.10.0
+	broadcast 192.168.10.255
+	gateway 192.168.10.1
+	# post-up iptables-restore < /etc/iptables_rules.save
+
+auto eth1
+iface eth1 inet static
+	address 192.168.5.1
+	netmask 255.255.255.0
+	network 192.168.5.0
+	broadcast 192.168.5.255
+	vlan-raw-device eth1
+
+auto eth1.100
+iface eth1.100 inet static
+	address 192.168.0.1
+	netmask 255.255.255.224
+	network 192.168.0.0
+	broadcast 192.168.0.31
+	mtu 1500
+	vlan-raw-device eth1
+
+auto eth1.200
+iface eth1.200 inet static
+	address 192.168.0.33
+	netmask 255.255.255.240
+	network 192.168.0.32
+	broadcast 192.168.0.47
+	mtu 1500
+	vlan-raw-device eth1
+
+auto eth1.300
+iface eth1.300 inet static
+	address 192.168.0.65
+	netmask 255.255.255.192
+	network 192.168.0.64
+	broadcast 192.168.0.127
+	mtu 1500
+	vlan-raw-device eth1
+
+auto eth1.400
+iface eth1.400 inet static
+	address 192.168.1.1
+	netmask 255.255.255.0
+	network 192.168.1.0
+	broadcast 192.168.1.255
+	mtu 1500
+	vlan-raw-device eth1
+
+auto eth1.500
+iface eth1.500 inet static
+	address 192.168.0.49
+	netmask 255.255.255.240
+	network 192.168.0.48
+	broadcast 192.168.0.63
+	mtu 1500
+	vlan-raw-device eth1
+
+auto eth1.600
+iface eth1.600 inet static
+	address 192.168.2.1
+	netmask 255.255.255.0
+	network 192.168.2.0
+	broadcast 192.168.2.255
+	mtu 1500
+	vlan-raw-device eth1
+
+auto eth1.700
+iface eth1.700 inet static
+	address 192.168.3.1
+	netmask 255.255.255.0
+	network 192.168.3.0
+	broadcast 192.168.3.255
+	mtu 1500
+	vlan-raw-device eth1
+
+auto eth1.800
+iface eth1.800 inet static
+	address 192.168.4.1
+	netmask 255.255.255.0
+	network 192.168.4.0
+	broadcast 192.168.4.255
+	mtu 1500
+	vlan-raw-device eth1	
