@@ -1,0 +1,63 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+// Resolution pour la zone societe.local
+
+acl "lan" {
+		192.168.4.0/24;
+		192.168.0.0/27;
+		192.168.0.32/28;
+		192.168.0.64/26;
+		192.168.0.48/28;
+		192.168.1.0/24;
+		192.168.3.0/24;
+		192.168.2.0/24;
+		192.168.5.0/24;
+	};
+	
+acl "dmz" {
+		192.168.10.0/24;
+	}; 
+
+zone "societe.local" {
+	type master;
+	file "/etc/bind/db.societe.local";
+	allow-query { "lan"; "dmz"; };
+	};
+
+// Resolution inverse pour la zone societe.local
+zone "4.168.192.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.4.168.192.in-addr.arpa";
+	};
+
+zone "vlan500.societe.local" {
+	type master;
+	file "/etc/bind/db.vlan500";
+	allow-query { "lan"; "dmz"; };
+	};
+
+// Resolution inverse pour la zone vlan500.societe.local
+zone "0.168.192.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.0.168.192.in-addr.arpa";
+	};
+
+zone "societe.fr" {
+	type master;
+	file "/etc/bind/db.societe.fr";
+	allow-query { "lan"; "dmz"; };
+	};
+
+// Resolution inverse pour la zone societe.local
+zone "10.168.192.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.10.168.192.in-addr.arpa";
+	};
+
+

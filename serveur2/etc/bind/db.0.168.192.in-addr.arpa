@@ -1,0 +1,16 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$ORIGIN 0.168.192.in-addr.arpa.
+$TTL	604800
+@	IN	SOA	ns1.vlan500.societe.local. root.vlan500.societe.local. (
+		       20181022		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+		        2419200   	; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	ns1.vlan500.societe.local.
+
+49-253	IN	NS	ns1.vlan500.societe.local.
+55	IN	PTR	client.vlan500.societe.local.

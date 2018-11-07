@@ -1,0 +1,20 @@
+;
+; BIND data file for local loopback interface
+;
+$ORIGIN vlan500.societe.local.
+$TTL	604800
+@	IN	SOA	ns1.vlan500.societe.local. root.vlan500.societe.local. (
+		     2018102202		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	ns1
+ns1	IN	A	192.168.4.20
+
+
+client	IN	A	192.168.0.55
+
+smtp    IN      A       192.168.10.3
+@       IN   MX  10     smtp

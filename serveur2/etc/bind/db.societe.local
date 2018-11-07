@@ -1,0 +1,29 @@
+;
+; BIND data file for local loopback interface
+;
+$ORIGIN societe.local.
+$TTL	604800
+@	IN	SOA	ns1.societe.local. root.societe.local. (
+		       2018110201	; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	ns1
+ns1	IN	A	192.168.4.20
+
+ftp     IN      CNAME   ns1
+proxy   IN      CNAME   ns1
+ntp     IN      CNAME   ns1
+print   IN      CNAME   ns1
+ldap    IN      CNAME   ns1
+
+smtp    IN      A       192.168.10.3
+@    IN MX 10  smtp
+
+pbx     IN      CNAME   ns1
+dhcp    IN      A       192.168.5.1
+
+
+
